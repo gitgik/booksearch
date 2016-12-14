@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, ListView
 from .forms import SearchForm
-from .models import Book
+from .models import Book, BookCategory
 from django.core.urlresolvers import reverse
 
 
@@ -28,19 +28,13 @@ class HomeView(SearchViewMixin, ListView):
 
     def post(self, request, *args, **kwargs):
         """Handle the post request from the form."""
-        choice = request.POST.get('choice')
+        choice = request.POST.get('category')
         search_query = request.POST.get('title')
 
         if not search_query:
             return redirect(reverse('index'))
-
-        if choice == "title":
-            # Search by title
-            results = Book.objects.filter(title__icontains=search_query)
-        else:
-            # Search by category
-            results = Book.objects.filter(category__name__iexact=search_query)
-
+        # Check first whether the book belongs to that category
+        results = Book.objects.filter(category=choice).filter(title__icontains=search_query)
         return render(request, "results.html", {'results': results})
 
 
