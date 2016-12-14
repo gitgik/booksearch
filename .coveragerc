@@ -1,5 +1,7 @@
 [report]
 omit =
+    search/admin.py
     */python?.?/*
     */site-packages/nose/*
     *__init__*
+

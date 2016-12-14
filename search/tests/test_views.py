@@ -1,5 +1,6 @@
 from django.test import TestCase, Client
 from django.core.urlresolvers import reverse
+from search.models import Book, BookCategory
 
 
 class SetupMixin(TestCase):
@@ -8,9 +9,13 @@ class SetupMixin(TestCase):
     def setUp(self):
         """Setup."""
         self.client = Client()
+        self.category = BookCategory(name="fiction")
+        self.category.save()
+        self.book = Book(title="Harry porter", category=self.category)
+        self.book.save()
 
 
-class HomeViewTestCase(TestCase):
+class HomeViewTestCase(SetupMixin):
     """Test case for the home view."""
 
     def test_user_can_access_homepage(self):
@@ -19,7 +24,7 @@ class HomeViewTestCase(TestCase):
         self.assertEquals(response.status_code, 200)
 
 
-class SearchViewTestCase(TestCase):
+class SearchViewTestCase(SetupMixin):
     """Test case for the search view."""
 
     def test_user_can_access_searchpage(self):
@@ -27,17 +32,11 @@ class SearchViewTestCase(TestCase):
         response = self.client.get(reverse('search'))
         self.assertEquals(response.status_code, 200)
 
-    def test_user_can_search_by_title(self):
+    def test_user_can_search_by_title_and_category(self):
         """Test user can search by title."""
-        data = {'title': 'harry porter and', 'choice': 'title'}
-        response = self.client.get(reverse('search'), data)
+        data = {'title': 'harry porter', 'category': self.category.pk}
+        response = self.client.post(reverse('search'), data)
         self.assertEquals(response.status_code, 200)
-
-    def test_user_can_search_by_category(self):
-        """Test user can search by category."""
-        data = {'title': 'adventure', 'choice': 'category'}
-        response = self.client.get(reverse('search'), data)
-        self.assertEquals(response.status_code, 200)
-
+        self.assertIn(self.book.title, response.content)
 
 

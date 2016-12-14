@@ -6,6 +6,7 @@ class ModelsTestCase(TestCase):
     """Test suite for the models."""
 
     def setUp(self):
+        """Setup variables."""
         self.title = "Harry Porter and the Goblet of Fire"
         self.category_name = "Adventure"
         self.category = BookCategory(name=self.category_name)
@@ -23,4 +24,5 @@ class ModelsTestCase(TestCase):
         new_count = Book.objects.count()
         self.assertNotEquals(old_count, new_count)
         self.assertIsInstance(self.book, Book)
+        self.assertEquals(self.book.title, self.title)
 

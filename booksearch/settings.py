@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,7 +24,7 @@ SECRET_KEY = 'is$%&yk6g__iamo6#=5b^q)&1=ibc9!g%geszo%myk_)iy5xk-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', 'testserver']
 
 # Test runner is django nose
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
@@ -45,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'search',
-    'django_nose',
+    'django_nose'
 ]
 
 MIDDLEWARE = [
