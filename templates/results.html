@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Book Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for book in results %}
+      <tr>
+        <td>{{ book.title }}</td>
+        <td>{{ book.category }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
