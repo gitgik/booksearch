@@ -1,7 +1,5 @@
-# booksearch
+# booksearch [![Build Status](https://travis-ci.org/gitgik/booksearch.svg?branch=master)](https://travis-ci.org/gitgik/booksearch)
 A book searching app for readers
-
-[![Build Status](https://travis-ci.org/gitgik/booksearch.svg?branch=master)](https://travis-ci.org/gitgik/booksearch)
 
 ## Technologies used
 * [Django](https://www.djangoproject.com/): The web framework for perfectionists with deadlines (Django builds better web apps with less code).
