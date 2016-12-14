@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, ListView
 from .forms import SearchForm
-from .models import Book, BookCategory
+from .models import Book
 from django.core.urlresolvers import reverse
 
 

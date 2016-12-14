@@ -15,7 +15,12 @@ class ModelsTestCase(TestCase):
 
     def test_category_creation(self):
         """Test whether a book category can be created."""
+        old_count = BookCategory.objects.count()
+        new_cat = BookCategory(name="non-fiction")
+        new_cat.save()
+        new_count = BookCategory.objects.count()
         self.assertIsInstance(self.category, BookCategory)
+        self.assertNotEquals(old_count, new_count)
 
     def test_book_creation(self):
         """Test that a book can be created."""

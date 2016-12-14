@@ -10,6 +10,13 @@ env:
 install:
   - pip install -r requirements.txt
   - pip install coveralls
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database booksearch;' -U nerd
+
 # command to run tests
 script:
   - python manage.py test --noinput
