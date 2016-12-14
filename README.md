@@ -1,8 +1,7 @@
 # booksearch
 A book searching app for readers
 
-[![Build Status](https://travis-ci.org/andela-ggikera/booksearch.svg?branch=master)](https://travis-ci.org/gitgik/djangular-bucketlist-app) [![Coverage Status](https://coveralls.io/repos/github/andela-ggikera/djangular-bucketlist-app/badge.svg?branch=develop)](https://coveralls.io/github/andela-ggikera/djangular-bucketlist-app?branch=develop) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
-A Django-powered Bucketlist API with an AngularJS consumption client.
+[![Build Status](https://travis-ci.org/andela-ggikera/booksearch.svg?branch=master)](https://travis-ci.org/gitgik/booksearch)
 
 ## Technologies used
 * [Django](https://www.djangoproject.com/): The web framework for perfectionists with deadlines (Django builds better web apps with less code).
@@ -35,17 +34,20 @@ A Django-powered Bucketlist API with an AngularJS consumption client.
         ```
     3. Install the dependencies needed to run the app:
         ```
-            $ pip install -r requirements.txt```
+            $ pip install -r requirements.txt
         ```
-
+    4. Make those migrations work
+        ```
+            $ python manage.py makemigrations
+            $ python manage.py migrate
+        ```
 
 * #### Run It
     Fire the engines using this one simple command:
-        ```
-            $ python manage.py makemigrations && python manage.py migrate
-            $ python manage.py runserver
-        ```
+    ```
+        $ python manage.py runserver
+    ```
     You can now access the bucketlist service on your browser by using
-        ```
-            http://localhost:8000/
-        ```
+    ```
+        http://localhost:8000/
+    ```
