@@ -7,14 +7,12 @@ class SearchForm(ModelForm):
 
     CHOICES = [('title', 'Title'), ('category', 'Category')]
     choice = ChoiceField(choices=CHOICES, label="Search by ")
-    category = CharField(required=False)
 
     class Meta:
         """Meta class to define model and associated field for the form."""
 
         model = Book
-        fields = ['title', 'category']
-
+        fields = ['title']
 
 
 class CategoryForm(ModelForm):
