@@ -1,5 +1,5 @@
 from django.test import TestCase
-from search.models import BookCategory, Book
+from search.models import BookCategory, Book, DatesMixin
 
 
 class ModelsTestCase(TestCase):
@@ -12,22 +12,26 @@ class ModelsTestCase(TestCase):
         self.category = BookCategory(name=self.category_name)
         self.category.save()
         self.book = Book(title=self.title, category=self.category)
+        self.dates = DatesMixin()
 
     def test_category_creation(self):
         """Test whether a book category can be created."""
-        old_count = BookCategory.objects.count()
-        new_cat = BookCategory(name="non-fiction")
-        new_cat.save()
-        new_count = BookCategory.objects.count()
+        self.old_count = BookCategory.objects.count()
+        self.new_cat = BookCategory(name="non-fiction")
+        self.new_cat.save()
+        self.new_count = BookCategory.objects.count()
         self.assertIsInstance(self.category, BookCategory)
-        self.assertNotEquals(old_count, new_count)
+        self.assertNotEquals(self.old_count, self.new_count)
 
     def test_book_creation(self):
-        """Test that a book can be created."""
-        old_count = Book.objects.count()
+        """Test whether a book can be created."""
+        self.old_count = Book.objects.count()
         self.book.save()
-        new_count = Book.objects.count()
-        self.assertNotEquals(old_count, new_count)
+        self.new_count = Book.objects.count()
+        self.assertNotEquals(self.old_count, self.new_count)
         self.assertIsInstance(self.book, Book)
         self.assertEquals(self.book.title, self.title)
 
+    def test_date_mixin(self):
+        """Test the date mixin works."""
+        self.assertIsInstance(self.dates, DatesMixin)

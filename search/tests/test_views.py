@@ -39,4 +39,12 @@ class SearchViewTestCase(SetupMixin):
         self.assertEquals(response.status_code, 200)
         self.assertIn(self.book.title, response.content)
 
+    def test_redirect_to_index_when_theres_no_search(self):
+        """Test the app redirects the user to index if no POST data."""
+        data = {}
+        response = self.client.post(reverse('search'), data)
+        self.assertEquals(response.status_code, 302)
+        self.assertEquals(response.content, '')
+
+
 
