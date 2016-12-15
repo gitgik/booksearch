@@ -29,7 +29,8 @@ class SearchViewTestCase(SetupMixin):
 
     def test_user_can_access_searchpage(self):
         """Test a user can access the search page."""
-        response = self.client.get(reverse('search'))
+        search_data = {'title': 'harry porter', 'category': self.category.pk}
+        response = self.client.post(reverse('search'), search_data)
         self.assertEquals(response.status_code, 200)
 
     def test_user_can_search_by_title_and_category(self):

@@ -1,4 +1,4 @@
-# booksearch [![Build Status](https://travis-ci.org/gitgik/booksearch.svg?branch=master)](https://travis-ci.org/gitgik/booksearch)
+# booksearch [![Build Status](https://travis-ci.org/gitgik/booksearch.svg?branch=master)](https://travis-ci.org/gitgik/booksearch) [![Coverage Status](https://coveralls.io/repos/github/gitgik/booksearch/badge.svg?branch=master)](https://coveralls.io/github/gitgik/booksearch?branch=master)
 A book searching app for readers
 
 ## Technologies used
