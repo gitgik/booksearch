@@ -35,3 +35,8 @@ class ModelsTestCase(TestCase):
     def test_date_mixin(self):
         """Test the date mixin works."""
         self.assertIsInstance(self.dates, DatesMixin)
+
+    def test_models_return_human_readable_representation(self):
+        """Test the models instances return a string."""
+        self.assertEqual(str(self.category), self.category_name)
+        self.assertEqual(str(self.book), self.title)
