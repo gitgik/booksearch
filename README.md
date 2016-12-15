@@ -31,14 +31,14 @@ A book searching app for readers
             $ source env/bin/activate
         ```
     3. Install the dependencies needed to run the app:
-        ```
-            $ pip install -r requirements.txt
-        ```
+    ```
+        $ pip install -r requirements.txt
+    ```
     4. Make those migrations work
-        ```
-            $ python manage.py makemigrations
-            $ python manage.py migrate
-        ```
+    ```
+        $ python manage.py makemigrations
+        $ python manage.py migrate
+    ```
 
 * #### Run It
     Fire the engines using this one simple command:
